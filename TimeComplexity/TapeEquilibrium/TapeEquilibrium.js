@@ -5,10 +5,11 @@ function solution(A) {
     const length = A.length - 1
     for (let i = 0; i < length; i++) {
         leftSumArray.push(leftCount += A[i])
-        rightSumArray.unshift(rightCount += A[length - i])
+        rightSumArray.push(rightCount += A[length - i])
     }
-    for (let i = 0; i < length; i++) {
-        result.push(Math.abs(leftSumArray[i] - rightSumArray[i]))
+    const reverseRightArray = rightSumArray.reverse()
+    for (let i = 0; i < leftSumArray.length; i++) {
+        result.push(Math.abs(leftSumArray[i] - reverseRightArray[i]))
     }
     return Math.min(...result)
 }
